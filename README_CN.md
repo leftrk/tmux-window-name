@@ -21,8 +21,7 @@
 ### Homebrew（推荐）
 
 ```bash
-brew tap leftrk/tmux-window-name https://github.com/leftrk/tmux-window-name
-brew install tmux-window-name
+brew install leftrk/tap/tmux-window-name
 ```
 
 添加到 `~/.tmux.conf`：
