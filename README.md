@@ -20,6 +20,8 @@ See [tests](tests/) for more scenarios.
 
 ## Installation
 
+> **Recommended**: Use with [Oh My Tmux](https://github.com/gpakosz/.tmux) for best experience.
+
 ### Homebrew (recommended)
 
 ```bash
@@ -39,16 +41,6 @@ set -g @plugin 'leftrk/tmux-window-name'
 ```
 
 Press `prefix + I` to install.
-
-### Manual
-
-```bash
-git clone https://github.com/leftrk/tmux-window-name.git ~/path
-```
-
-```tmux.conf
-run-shell ~/path/tmux_window_name.tmux
-```
 
 ## Common Options
 

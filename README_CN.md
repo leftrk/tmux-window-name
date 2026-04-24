@@ -4,8 +4,6 @@
 
 智能 tmux 窗口命名，类似 IDE 标签页。
 
-智能 tmux 窗口命名，类似 IDE 标签页。
-
 ![截图](screenshots/example.png)
 
 ## 快速示例
@@ -21,6 +19,8 @@
 更多场景见 [测试文件](tests/)。
 
 ## 安装
+
+> **推荐**：配合 [Oh My Tmux](https://github.com/gpakosz/.tmux) 使用效果最佳。
 
 ### Homebrew（推荐）
 
@@ -41,16 +41,6 @@ set -g @plugin 'leftrk/tmux-window-name'
 ```
 
 按 `prefix + I` 安装。
-
-### 手动安装
-
-```bash
-git clone https://github.com/leftrk/tmux-window-name.git ~/path
-```
-
-```tmux.conf
-run-shell ~/path/tmux_window_name.tmux
-```
 
 ## 常用配置
 
