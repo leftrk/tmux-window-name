@@ -1,6 +1,6 @@
 [project]
 name = "tmux-window-name"
-version = "1.0.1"
+version = "1.0.2"
 description = "Smart tmux window names like IDE tablines"
 readme = "README.md"
 license = "MIT"
@@ -14,11 +14,11 @@ dev = ["pytest>=7", "ruff>=0.1"]
 tmux-window-name = "tmux_window_name.cli:main"
 
 [build-system]
-requires = ["uv_build>=0.11.7,<0.12"]
-build-backend = "uv_build"
+requires = ["hatchling>=1.21"]
+build-backend = "hatchling.build"
 
-[tool.uv.build-backend]
-module-root = ""
+[tool.hatch.build.targets.wheel]
+packages = ["tmux_window_name"]
 
 [tool.ruff]
 target-version = 'py311'
