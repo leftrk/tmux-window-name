@@ -6,16 +6,34 @@ CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 LIBTMUX_AVAILABLE=$(python3 -c "import importlib.util; print(importlib.util.find_spec('libtmux') is not None)" 2>/dev/null)
 if [ "$LIBTMUX_AVAILABLE" != "True" ]; then
     tmux display "Installing libtmux dependency..."
-    # Try uv first, fallback to pip if uv not available
+
+    # Try multiple installation methods in order of preference
+    installed=false
+
+    # Method 1: uv (fastest, handles externally-managed envs automatically)
     if command -v uv &> /dev/null; then
-        uv pip install libtmux 2>/dev/null
-    else
-        python3 -m pip install --user libtmux 2>/dev/null
+        uv pip install libtmux 2>/dev/null && installed=true
     fi
+
+    # Method 2: pipx (isolated environment, good for CLI tools)
+    if [ "$installed" = false ] && command -v pipx &> /dev/null; then
+        pipx install libtmux 2>/dev/null && installed=true
+    fi
+
+    # Method 3: pip with --break-system-packages (for externally-managed envs like Homebrew Python)
+    if [ "$installed" = false ]; then
+        python3 -m pip install --break-system-packages libtmux 2>/dev/null && installed=true
+    fi
+
+    # Method 4: pip --user (legacy, may work on some systems)
+    if [ "$installed" = false ]; then
+        python3 -m pip install --user libtmux 2>/dev/null && installed=true
+    fi
+
     # Verify installation
     LIBTMUX_AVAILABLE=$(python3 -c "import importlib.util; print(importlib.util.find_spec('libtmux') is not None)" 2>/dev/null)
     if [ "$LIBTMUX_AVAILABLE" != "True" ]; then
-        tmux display "ERROR: tmux-window-name - Failed to install libtmux. Install uv (recommended) or run: python3 -m pip install --user libtmux"
+        tmux display "ERROR: tmux-window-name - Failed to install libtmux. Try: uv pip install libtmux OR pip3 install --break-system-packages libtmux"
         exit 0
     fi
     tmux display "libtmux installed successfully!"
