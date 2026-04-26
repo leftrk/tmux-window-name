@@ -116,4 +116,4 @@ Use case: Without this, `~/projects/app` (shell) shows `app` while vim runs in `
 set -g @tmux_window_name_log_level "'DEBUG'"
 ```
 
-Logs go to `/tmp/tmux-window-name.log`.
+Logs go to `/tmp/tmux-smart-name.log`.

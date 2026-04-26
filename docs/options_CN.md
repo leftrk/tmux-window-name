@@ -116,4 +116,4 @@ set -g @tmux_window_name_ignore_program_diffs "True"
 set -g @tmux_window_name_log_level "'DEBUG'"
 ```
 
-日志输出到 `/tmp/tmux-window-name.log`。
+日志输出到 `/tmp/tmux-smart-name.log`。
