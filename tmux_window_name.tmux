@@ -42,6 +42,7 @@ fi
 # Set PYTHONPATH to include the package directory for TPM/manual installs
 export PYTHONPATH="$CURRENT_DIR:$PYTHONPATH"
 
+tmux set -g set-titles off # Disable OSC 2 title handling to prevent leak from terminal shell-integration
 tmux set -g automatic-rename on # Set automatic-rename on to make #{automatic-rename} be on when a new window is been open without a name
 tmux set-hook -g 'after-new-window[8921]' 'set -wF @tmux_window_name_enabled \#\{automatic-rename\} ; set -w automatic-rename off'
 tmux set-hook -g 'after-select-window[8921]' "run-shell -b \"PYTHONPATH='$CURRENT_DIR' python3 -m tmux_window_name.cli\""
